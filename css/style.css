@@ -165,6 +165,9 @@ svg{flex-shrink:0}
   display:grid;
   grid-template-rows:1fr auto;
   min-height:100vh;
+  max-width:1400px;
+  width:100%;
+  margin:0 auto;
 }
 
 .hero-main{
@@ -201,11 +204,11 @@ svg{flex-shrink:0}
 }
 .hero-name-line{
   display:block;
-  font-size:clamp(5.5rem,17vw,15rem);
+  font-size:clamp(4.5rem,12vw,11rem);
   color:var(--text);
 }
 .hero-name-line.offset{
-  padding-left:clamp(2rem,6vw,8rem);
+  padding-left:clamp(1.5rem,4vw,6rem);
   display:flex;
   align-items:baseline;
   gap:0.18em;
@@ -317,6 +320,13 @@ svg{flex-shrink:0}
   width:40px;height:1px;
   background:var(--border2);
   display:inline-block;
+}
+
+@media(min-width:900px){
+  .hero{
+    padding-top:120px;
+    padding-bottom:72px;
+  }
 }
 
 @media(max-width:700px){
@@ -998,72 +1008,3 @@ svg{flex-shrink:0}
   .hero-name-line.offset{padding-left:1rem;}
   .hero-name-ghost{font-size:0.42em}
 
-  .hero-desc{font-size:0.95rem;max-width:100%;}
-  .hero-bottom{gap:18px}
-
-  .section-label{font-size:0.64rem}
-  .section-title{font-size:clamp(1.6rem,8vw,2.4rem);line-height:1.05;margin-bottom:8px}
-
-  .about-title-giant{font-size:clamp(2rem,9vw,3.6rem)}
-
-  .contact-big-text{font-size:clamp(2rem,10vw,3.6rem);margin-bottom:22px}
-
-  /* Carrusel / proyectos: ocupar casi todo el ancho para mejor lectura en móvil */
-  .projects-cards{gap:12px;padding-left:12px;padding-right:12px}
-  .project-card{flex:0 0 88vw;border-radius:14px}
-  .project-img-container{height:160px}
-  .project-name{font-size:1rem}
-  .project-desc{font-size:0.88rem;-webkit-line-clamp:4}
-  .project-tags{gap:6px}
-
-  /* Mejor flujo para grids y elementos compactos */
-  .about-img-frame{width:240px}
-  .about-text p{font-size:0.98rem}
-
-  /* Evitar que elementos colapsen o se salgan */
-  .nav-menu{right:12px;left:12px}
-}
-
-@media (max-width:360px){
-  .hero-name-line{font-size:clamp(2rem,14vw,3.2rem)}
-  .section-title{font-size:clamp(1.4rem,9vw,2rem)}
-  .project-card{flex:0 0 92vw}
-  .project-img-container{height:140px}
-  .btn-accent{padding:12px 20px}
-}
-.animate-on-scroll{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);
-}
-.animate-on-scroll.animated{
-  opacity:1;
-  transform:none;
-}
-[data-animate="fade-left"].animate-on-scroll{transform:translateX(-30px)}
-[data-animate="fade-right"].animate-on-scroll{transform:translateX(30px)}
-[data-animate="fade-left"].animated,[data-animate="fade-right"].animated{transform:none}
-
-/* Nombre principal: animaciones de entrada en carga */
-.hero-name-line{display:inline-block;opacity:0;will-change:transform,opacity}
-
-@keyframes slideInFromLeft{
-  from{transform:translateX(-28px);opacity:0}
-  to{transform:none;opacity:1}
-}
-@keyframes slideInFromRight{
-  from{transform:translateX(28px);opacity:0}
-  to{transform:none;opacity:1}
-}
-
-.hero-name-line:first-child{
-  animation:slideInFromLeft 820ms var(--ease) 120ms both;
-}
-.hero-name-line.offset{
-  animation:slideInFromRight 820ms var(--ease) 260ms both;
-}
-
-/* Defer animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .hero-name-line{animation:none!important;transform:none!important;opacity:1!important}
-}
